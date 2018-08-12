@@ -3,7 +3,7 @@
 
 #define FAST_LED_LEDS_NUM 1
 
-// GPIO4 = D2
+// On board D2 corresponds to GPIO4
 #define NEO_PIXEL_DIN 4
 
 CRGB ledsStripe[FAST_LED_LEDS_NUM];
