@@ -8,7 +8,7 @@
 
 CRGB ledsStripe[FAST_LED_LEDS_NUM];
 void setStripeColor(uint8_t amount_red, uint8_t amount_green, uint8_t amount_blue);
-void fade(uint8_t red, uint8_t green, uint8_t blue, bool fade_in);
+void fade(bool red, bool green, bool blue, bool fade_in);
 
 void setup(void) {
   Serial.begin(115200);
@@ -26,19 +26,19 @@ void setup(void) {
 }
 
 void loop(void) {
-  digitalWrite(LED_BUILTIN, 1 - digitalRead(LED_BUILTIN));
-  fade(255, 0, 0, false);
-  fade(255, 0, 0, true);
-  fade(0, 255, 0, false);
-  fade(0, 255, 0, true);
-  fade(0, 0, 255, false);
-  fade(0, 0, 255, true);
+  digitalWrite(LED_BUILTIN, static_cast<uint8_t>(1 - digitalRead(LED_BUILTIN)));
+  fade(true, false, false, true);
+  fade(true, false, false, false);
+  fade(false, true, false, true);
+  fade(false, true, false, false);
+  fade(false, false, true, true);
+  fade(false, false, true, false);
 }
 
-void fade(uint8_t red, uint8_t green, uint8_t blue, bool fade_in) {
+void fade(bool red, bool green, bool blue, bool fade_in) {
   uint8_t amount;
   for (uint16_t k = 0; k < 256; k++) {
-    amount = fade_in ? k : 255 - k;
+    amount = static_cast<uint8_t>(fade_in ? k : 255 - k);
 
     setStripeColor(amount * red, amount * green, amount * blue);
     FastLED.show();
