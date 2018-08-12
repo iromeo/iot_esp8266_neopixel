@@ -30,4 +30,7 @@ This will configure project files for CLion Code Insight features support
 # Upload FW
 
 In CLion chose `PLATFORMIO_UPLOAD` target (see `doc/clion_platformion_upload_fw_target.png` screenshot).
-Press "Build" button near target name.
+Press `Build` button near target name. 
+
+P.S: According to PlatformIO + CLion integration implementation you are 
+suppose to use `Build` button instead of `Run` to launch PlatformIO targets. 
